@@ -3,6 +3,7 @@ from threading import Timer
 from time import sleep
 from gpiozero import PWMLED, Button, TonalBuzzer
 from gpiozero.tones import Tone
+from signal import pause
 
 BUTTON_PIN = 8
 BUZZER_PIN = 18
@@ -83,8 +84,7 @@ class PomodoroTimer(object):
 		self.button = Button(BUTTON_PIN, pull_up=False)
 		self.button.when_pressed = self.start_pomodoro
 
-		message = input("Press enter to quit\n\n")
-		
+		pause()
 
 if __name__ == '__main__':
 	PomodoroTimer().run()
